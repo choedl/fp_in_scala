@@ -6,9 +6,10 @@ object chapter2 {
 
   def isDivisibleBy(k: Int): Pred[Int] = n => n % k == 0
 
-  val isEven: Int => Boolean = n => isDivisibleBy(2)(n)
+  val isEven: Pred[Int] = n => isDivisibleBy(2)(n)
 
-  val isOdd: Int => Boolean = not(isEven)
+  val isOdd: Pred[Int] = not(isEven)
 
-  def not(p: Int => Boolean): Int => Boolean = n => !(p(n))
+  def not(p: Pred[Int]): Pred[Int] = n => !(p(n))
+  
 }
